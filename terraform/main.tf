@@ -4,12 +4,12 @@ resource "random_id" "suffix" {
 
 module "bucket_source" {
   source = "./modules/s3_bucket"
-  name   = "ynov-iac-source-${random_id.suffix.hex}"
+  name   = "ynov-iac-2025-source-${random_id.suffix.hex}"
 }
 
 module "bucket_destination" {
   source = "./modules/s3_bucket"
-  name   = "ynov-iac-dest-${random_id.suffix.hex}"
+  name   = "ynov-iac-2025-dest-${random_id.suffix.hex}"
 }
 
 module "iam" {
@@ -20,11 +20,10 @@ module "iam" {
 
 module "lambda" {
   source                   = "./modules/lambda"
-  function_name            = "ynov-iac-image-to-pdf"
+  function_name            = "ynov-iac-2025-converter"
   runtime                  = var.lambda_runtime
   role_arn                 = module.iam.lambda_role_arn
   source_bucket_name       = module.bucket_source.bucket_name
   source_bucket_arn        = module.bucket_source.bucket_arn
   destination_bucket_name  = module.bucket_destination.bucket_name
-  layer_arn                = var.pillow_layer_arn
 }

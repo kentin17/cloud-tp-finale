@@ -1,6 +1,6 @@
 data "archive_file" "handler" {
   type        = "zip"
-  source_dir  = "${path.root}/../lambda_src"
+  source_dir  = "${path.root}/../lambda_src/build"
   output_path = "${path.module}/handler.zip"
 }
 
@@ -12,7 +12,6 @@ resource "aws_lambda_function" "this" {
   runtime          = var.runtime
   role             = var.role_arn
   timeout          = 30
-  layers           = [var.layer_arn]
 
   environment {
     variables = {

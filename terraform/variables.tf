@@ -4,14 +4,11 @@ variable "aws_region" {
 }
 
 variable "role_arn" {
-  type = string
+  type    = string
+  default = "arn:aws:iam::738563260931:role/role_etudiants"
 }
 
 variable "lambda_runtime" {
   type    = string
   default = "python3.11"
-}
-
-variable "pillow_layer_arn" {
-  type = string
 }

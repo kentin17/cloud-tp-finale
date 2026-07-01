@@ -3,4 +3,5 @@
 *.tfstate.backup
 *.zip
 *.tfvars
+lambda_src/build/
 ynov-student_accessKeys.csv

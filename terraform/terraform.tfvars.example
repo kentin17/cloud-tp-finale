@@ -1,3 +1,2 @@
-role_arn         = "arn:aws:iam::123456789012:role/ynov-restricted-role"
-aws_region       = "eu-west-3"
-pillow_layer_arn = "arn:aws:lambda:eu-west-3:770693421928:layer:Klayers-p311-pillow:1"
+role_arn   = "arn:aws:iam::738563260931:role/role_etudiants"
+aws_region = "eu-west-3"

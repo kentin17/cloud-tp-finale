@@ -21,7 +21,3 @@ variable "source_bucket_arn" {
 variable "destination_bucket_name" {
   type = string
 }
-
-variable "layer_arn" {
-  type = string
-}
