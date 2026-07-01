@@ -1,0 +1,19 @@
+- hosts: local
+  collections:
+    - amazon.aws
+  vars:
+    lambda_name: ynov-iac-image-to-pdf
+    src_dir: ../lambda_src
+    zip_path: ./handler.zip
+  tasks:
+    - name: archive lambda source
+      archive:
+        path: "{{ src_dir }}"
+        dest: "{{ zip_path }}"
+        format: zip
+
+    - name: update lambda function code
+      amazon.aws.lambda:
+        name: "{{ lambda_name }}"
+        zip_file: "{{ zip_path }}"
+        state: present
